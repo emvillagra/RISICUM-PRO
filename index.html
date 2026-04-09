@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RISICUM PRO — Sistema de Gestión SST para Profesionales</title>
+<link rel="icon" type="image/png" href="https://i.ibb.co/PvVNQdSD/Dise-o-sin-t-tulo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #0f4074;
@@ -14,7 +15,6 @@
   --orange: #ff8133;
   --orange-dark: #e86b1a;
   --white: #ffffff;
-  --off-white: #f8fafc;
   --gray-100: #f1f5f9;
   --gray-200: #e2e8f0;
   --gray-500: #64748b;
@@ -23,170 +23,177 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
-h1, h2, h3, h4 { font-family: 'Syne', sans-serif; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
 
+/* NAV */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  background: rgba(15, 64, 116, 0.97); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: var(--navy-dark);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
   padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
 }
-.nav-logo { display: flex; align-items: center; gap: 12px; font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--white); text-decoration: none; letter-spacing: -0.5px; }
-.nav-logo span { color: var(--orange); }
-.nav-logo img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
-.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-.nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { width: 38px; height: 38px; object-fit: contain; border-radius: 8px; background: white; padding: 2px; }
+.nav-logo-text { font-weight: 800; font-size: 20px; color: var(--white); letter-spacing: -0.5px; }
+.nav-logo-text span { color: var(--orange); }
+.nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
 .nav-links a:hover { color: var(--white); }
-.nav-cta { background: var(--orange) !important; color: var(--white) !important; padding: 9px 22px; border-radius: 8px; font-weight: 600 !important; }
+.nav-cta { background: var(--orange) !important; color: var(--white) !important; padding: 9px 20px; border-radius: 8px; font-weight: 700 !important; transition: background 0.2s !important; }
+.nav-cta:hover { background: var(--orange-dark) !important; }
 
+/* HERO */
 .hero {
   min-height: 100vh;
-  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, var(--navy-light) 100%);
-  position: relative; overflow: hidden; display: flex; align-items: center; padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+  display: flex; align-items: center;
+  padding: 100px 5% 60px;
 }
-.hero::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(255,129,51,0.12) 0%, transparent 60%),
-              radial-gradient(ellipse at 20% 80%, rgba(26,95,168,0.3) 0%, transparent 50%);
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://i.ibb.co/TxFNm6GT/Gemini-Generated-Image-3fv09d3fv09d3fv0.png');
+  background-size: cover; background-position: center;
+  filter: brightness(0.25) saturate(0.8);
 }
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
-.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,129,51,0.15); border: 1px solid rgba(255,129,51,0.4); color: var(--orange); padding: 6px 16px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 24px; animation: fadeUp 0.6s ease both; }
-.hero-badge::before { content: '●'; font-size: 8px; }
-.hero h1 { font-size: clamp(36px, 4.5vw, 58px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 20px; animation: fadeUp 0.6s 0.1s ease both; }
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(10,45,82,0.92) 0%, rgba(15,64,116,0.85) 50%, rgba(26,95,168,0.75) 100%);
+}
+.hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; width: 100%; text-align: center; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,129,51,0.2); border: 1px solid rgba(255,129,51,0.5); color: var(--orange); padding: 7px 18px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 28px; animation: fadeUp 0.6s ease both; }
+.hero h1 { font-size: clamp(36px, 5vw, 62px); font-weight: 800; color: var(--white); line-height: 1.1; letter-spacing: -2px; margin-bottom: 20px; animation: fadeUp 0.6s 0.1s ease both; }
 .hero h1 span { color: var(--orange); }
-.hero p { font-size: 18px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 40px; animation: fadeUp 0.6s 0.2s ease both; }
-.hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
-.btn-primary { background: var(--orange); color: var(--white); padding: 14px 32px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; box-shadow: 0 4px 24px rgba(255,129,51,0.4); }
-.btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,129,51,0.5); }
-.btn-secondary { background: rgba(255,255,255,0.1); color: var(--white); padding: 14px 32px; border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(255,255,255,0.25); transition: background 0.2s, transform 0.2s; }
-.btn-secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
-.hero-stats { display: flex; gap: 32px; margin-top: 48px; animation: fadeUp 0.6s 0.4s ease both; }
-.hero-stat-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--white); }
-.hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.55); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
-.hero-visual { animation: fadeUp 0.6s 0.2s ease both; }
-.mockup-frame { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 20px; backdrop-filter: blur(10px); }
-.mockup-bar { display: flex; gap: 6px; margin-bottom: 16px; }
-.mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
-.mockup-dot:nth-child(1) { background: #ff5f57; }
-.mockup-dot:nth-child(2) { background: #ffbd2e; }
-.mockup-dot:nth-child(3) { background: #28c840; }
-.mockup-content { display: grid; grid-template-columns: 160px 1fr; gap: 12px; height: 320px; }
-.mockup-sidebar { background: var(--navy-dark); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
-.mockup-menu-item { height: 28px; border-radius: 6px; background: rgba(255,255,255,0.08); }
-.mockup-menu-item.active { background: var(--orange); }
-.mockup-menu-item:first-child { background: rgba(255,255,255,0.15); margin-bottom: 4px; }
-.mockup-main { display: flex; flex-direction: column; gap: 10px; }
-.mockup-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-.mockup-kpi { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 10px; border: 1px solid rgba(255,255,255,0.08); }
-.mockup-kpi-val { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--white); }
-.mockup-kpi-label { font-size: 9px; color: rgba(255,255,255,0.5); margin-top: 2px; }
-.mockup-table { flex: 1; background: rgba(255,255,255,0.06); border-radius: 8px; padding: 10px; border: 1px solid rgba(255,255,255,0.08); }
-.mockup-row { height: 22px; background: rgba(255,255,255,0.06); border-radius: 4px; margin-bottom: 6px; }
-.mockup-row.header { background: rgba(255,255,255,0.12); }
+.hero p { font-size: 19px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 40px; animation: fadeUp 0.6s 0.2s ease both; max-width: 580px; margin-left: auto; margin-right: auto; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; animation: fadeUp 0.6s 0.3s ease both; margin-bottom: 60px; }
+.btn-primary { background: var(--orange); color: var(--white); padding: 15px 34px; border-radius: 10px; font-weight: 700; font-size: 16px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; box-shadow: 0 4px 24px rgba(255,129,51,0.45); }
+.btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255,129,51,0.55); }
+.btn-secondary { background: rgba(255,255,255,0.12); color: var(--white); padding: 15px 34px; border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); transition: background 0.2s, transform 0.2s; }
+.btn-secondary:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+.hero-stats { display: flex; gap: 40px; justify-content: center; animation: fadeUp 0.6s 0.4s ease both; }
+.hero-stat-num { font-size: 30px; font-weight: 800; color: var(--white); }
+.hero-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
 
-.section { padding: 96px 5%; }
-.section-inner { max-width: 1200px; margin: 0 auto; }
-.section-tag { font-size: 12px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 12px; }
-.section-title { font-size: clamp(28px, 3.5vw, 44px); font-weight: 800; color: var(--navy); line-height: 1.15; letter-spacing: -1px; margin-bottom: 16px; }
-.section-subtitle { font-size: 18px; color: var(--gray-500); line-height: 1.7; max-width: 580px; }
+/* SCREENSHOTS */
+.screenshots-section { background: var(--gray-100); padding: 80px 5%; }
+.screenshots-inner { max-width: 1100px; margin: 0 auto; }
+.screenshots-title { text-align: center; font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--navy); margin-bottom: 8px; letter-spacing: -1px; }
+.screenshots-sub { text-align: center; color: var(--gray-500); font-size: 16px; margin-bottom: 48px; }
+.screenshots-grid { display: grid; grid-template-columns: 1fr 320px; gap: 32px; align-items: start; }
+.screenshot-web { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 60px rgba(15,64,116,0.2); border: 2px solid var(--gray-200); }
+.screenshot-web img { width: 100%; display: block; }
+.screenshot-mobile-wrap { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+.screenshot-mobile { border-radius: 32px; overflow: hidden; box-shadow: 0 20px 60px rgba(15,64,116,0.25); border: 3px solid var(--gray-200); max-width: 280px; width: 100%; }
+.screenshot-mobile img { width: 100%; display: block; }
+.screenshot-label { font-size: 12px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.08em; text-align: center; }
+.screenshot-badge { background: var(--navy); color: white; padding: 6px 16px; border-radius: 100px; font-size: 12px; font-weight: 700; }
 
-.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-.feature-card { background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 16px; padding: 32px; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; position: relative; overflow: hidden; }
-.feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--navy), var(--orange)); opacity: 0; transition: opacity 0.25s; }
-.feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(15,64,116,0.12); border-color: var(--navy); }
-.feature-card:hover::before { opacity: 1; }
-.feature-icon { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg, var(--navy), var(--navy-light)); display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
-.feature-card h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+/* FEATURES */
+.section { padding: 88px 5%; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-tag { font-size: 12px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; }
+.section-title { font-size: clamp(26px, 3vw, 42px); font-weight: 800; color: var(--navy); line-height: 1.15; letter-spacing: -1px; margin-bottom: 14px; }
+.section-subtitle { font-size: 17px; color: var(--gray-500); line-height: 1.7; max-width: 560px; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 52px; }
+.feature-card { background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 16px; padding: 28px; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; position: relative; overflow: hidden; }
+.feature-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--navy), var(--orange)); opacity: 0; transition: opacity 0.25s; }
+.feature-card:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(15,64,116,0.1); border-color: var(--navy); }
+.feature-card:hover::after { opacity: 1; }
+.feature-icon { font-size: 28px; margin-bottom: 16px; }
+.feature-card h3 { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
 .feature-card p { font-size: 14px; color: var(--gray-500); line-height: 1.65; }
 
-.modules-section { background: var(--gray-100); padding: 96px 5%; }
-.modules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
-.module-item { background: var(--white); border: 1.5px solid var(--gray-200); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 14px; transition: all 0.2s; }
-.module-item:hover { border-color: var(--navy); background: var(--navy); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,64,116,0.2); }
-.module-item:hover .module-name { color: var(--white); }
-.module-item:hover .module-icon-bg { background: rgba(255,255,255,0.15); }
-.module-icon-bg { width: 40px; height: 40px; border-radius: 10px; background: var(--gray-100); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; transition: background 0.2s; }
-.module-name { font-size: 14px; font-weight: 600; color: var(--navy); transition: color 0.2s; }
+/* MODULES */
+.modules-section { background: var(--navy-dark); padding: 88px 5%; }
+.modules-section .section-title { color: white; }
+.modules-section .section-tag { color: var(--orange); }
+.modules-section .section-subtitle { color: rgba(255,255,255,0.6); }
+.modules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 48px; }
+.module-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 18px; display: flex; align-items: center; gap: 12px; transition: all 0.2s; cursor: default; }
+.module-item:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-3px); }
+.module-item:hover .module-name { color: white; }
+.module-icon { font-size: 20px; flex-shrink: 0; }
+.module-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.85); transition: color 0.2s; }
 
-.pricing-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; margin-top: 56px; max-width: 800px; margin-left: auto; margin-right: auto; }
-.pricing-card { border-radius: 20px; padding: 40px; border: 2px solid var(--gray-200); position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
-.pricing-card:hover { transform: translateY(-6px); }
-.pricing-card.featured { background: var(--navy); border-color: var(--navy); box-shadow: 0 24px 60px rgba(15,64,116,0.35); }
-.pricing-badge { position: absolute; top: 20px; right: 20px; background: var(--orange); color: var(--white); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.08em; }
-.pricing-plan { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 12px; }
-.pricing-price { font-family: 'Syne', sans-serif; font-size: 42px; font-weight: 800; color: var(--navy); line-height: 1; }
-.pricing-card.featured .pricing-price { color: var(--white); }
-.pricing-period { font-size: 14px; color: var(--gray-500); margin-top: 4px; margin-bottom: 28px; }
-.pricing-card.featured .pricing-period { color: rgba(255,255,255,0.55); }
-.pricing-divider { border: none; border-top: 1px solid var(--gray-200); margin-bottom: 24px; }
+/* PRICING */
+.pricing-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 24px; margin-top: 52px; max-width: 780px; margin-left: auto; margin-right: auto; }
+.pricing-card { border-radius: 20px; padding: 36px; border: 2px solid var(--gray-200); position: relative; overflow: hidden; transition: transform 0.25s; }
+.pricing-card:hover { transform: translateY(-5px); }
+.pricing-card.featured { background: var(--navy); border-color: var(--navy); box-shadow: 0 20px 50px rgba(15,64,116,0.3); }
+.pricing-badge { position: absolute; top: 18px; right: 18px; background: var(--orange); color: white; font-size: 10px; font-weight: 700; padding: 4px 12px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.08em; }
+.pricing-plan { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 10px; }
+.pricing-price { font-size: 40px; font-weight: 800; color: var(--navy); line-height: 1; }
+.pricing-card.featured .pricing-price { color: white; }
+.pricing-period { font-size: 13px; color: var(--gray-500); margin-top: 4px; margin-bottom: 24px; }
+.pricing-card.featured .pricing-period { color: rgba(255,255,255,0.5); }
+.pricing-divider { border: none; border-top: 1px solid var(--gray-200); margin-bottom: 20px; }
 .pricing-card.featured .pricing-divider { border-color: rgba(255,255,255,0.12); }
-.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-.pricing-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--gray-700); line-height: 1.5; }
-.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.85); }
-.pricing-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-.btn-plan { display: block; text-align: center; padding: 14px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+.pricing-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.pricing-features li { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: var(--gray-700); line-height: 1.5; }
+.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.82); }
+.pricing-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
+.btn-plan { display: block; text-align: center; padding: 13px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; }
 .btn-plan-outline { border: 2px solid var(--navy); color: var(--navy); }
-.btn-plan-outline:hover { background: var(--navy); color: var(--white); }
-.btn-plan-filled { background: var(--orange); color: var(--white); box-shadow: 0 4px 20px rgba(255,129,51,0.35); }
-.btn-plan-filled:hover { background: var(--orange-dark); transform: translateY(-2px); }
+.btn-plan-outline:hover { background: var(--navy); color: white; }
+.btn-plan-soon { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); cursor: default; font-size: 14px; }
 
-.testimonials-section { background: var(--navy); padding: 96px 5%; }
-.testimonials-section .section-title { color: var(--white); }
-.testimonials-section .section-subtitle { color: rgba(255,255,255,0.65); }
-.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
-.testimonial-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 28px; transition: background 0.2s; }
-.testimonial-card:hover { background: rgba(255,255,255,0.1); }
-.testimonial-stars { color: var(--orange); font-size: 16px; margin-bottom: 14px; }
-.testimonial-text { font-size: 15px; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
-.testimonial-author { display: flex; align-items: center; gap: 12px; }
-.testimonial-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--navy-light)); display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 16px; }
-.testimonial-name { font-weight: 700; color: var(--white); font-size: 14px; }
-.testimonial-role { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+/* TESTIMONIALS */
+.testimonials-section { background: var(--gray-100); padding: 88px 5%; }
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+.testimonial-card { background: white; border: 1.5px solid var(--gray-200); border-radius: 16px; padding: 26px; transition: box-shadow 0.2s; }
+.testimonial-card:hover { box-shadow: 0 8px 28px rgba(15,64,116,0.08); }
+.testimonial-stars { color: var(--orange); font-size: 15px; margin-bottom: 12px; }
+.testimonial-text { font-size: 14px; color: var(--gray-700); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 10px; }
+.testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--orange), var(--navy-light)); display: flex; align-items: center; justify-content: center; font-weight: 800; color: white; font-size: 15px; flex-shrink: 0; }
+.testimonial-name { font-weight: 700; color: var(--navy); font-size: 14px; }
+.testimonial-role { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
 
-.faq-section { padding: 96px 5%; }
-.faq-inner { max-width: 720px; margin: 0 auto; }
-.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 12px; }
+/* FAQ */
+.faq-inner { max-width: 680px; margin: 0 auto; }
+.faq-list { margin-top: 44px; display: flex; flex-direction: column; gap: 10px; }
 .faq-item { border: 1.5px solid var(--gray-200); border-radius: 12px; overflow: hidden; }
-.faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; background: none; border: none; cursor: pointer; font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; color: var(--navy); text-align: left; gap: 16px; transition: background 0.2s; }
+.faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; background: none; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--navy); text-align: left; gap: 14px; transition: background 0.2s; }
 .faq-question:hover { background: var(--gray-100); }
-.faq-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: white; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; transition: transform 0.3s, background 0.2s; }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s; padding: 0 24px; }
-.faq-answer p { font-size: 14px; color: var(--gray-500); line-height: 1.75; padding-bottom: 20px; }
+.faq-icon { width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: white; display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; transition: transform 0.3s, background 0.2s; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; padding: 0 22px; }
+.faq-answer p { font-size: 14px; color: var(--gray-500); line-height: 1.75; padding-bottom: 18px; }
 .faq-item.open .faq-answer { max-height: 300px; }
 .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--orange); }
 
-.cta-section { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); padding: 96px 5%; text-align: center; position: relative; overflow: hidden; }
-.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,129,51,0.15), transparent 70%); }
-.cta-section h2 { font-size: clamp(28px, 3.5vw, 48px); font-weight: 800; color: var(--white); margin-bottom: 16px; position: relative; z-index: 1; }
-.cta-section p { font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 40px; position: relative; z-index: 1; }
-.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+/* CTA */
+.cta-section { background: linear-gradient(135deg, var(--navy-dark), var(--navy)); padding: 88px 5%; text-align: center; position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(ellipse, rgba(255,129,51,0.12), transparent 70%); }
+.cta-section h2 { font-size: clamp(26px, 3.5vw, 44px); font-weight: 800; color: white; margin-bottom: 14px; position: relative; z-index: 1; letter-spacing: -1px; }
+.cta-section p { font-size: 17px; color: rgba(255,255,255,0.65); margin-bottom: 36px; position: relative; z-index: 1; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 
-footer { background: var(--navy-dark); padding: 48px 5% 32px; border-top: 1px solid rgba(255,255,255,0.06); }
-.footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-.footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); text-decoration: none; }
+/* FOOTER */
+footer { background: var(--navy-dark); padding: 44px 5% 28px; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-logo { font-weight: 800; font-size: 18px; color: white; text-decoration: none; }
 .footer-logo span { color: var(--orange); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: var(--white); }
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); width: 100%; text-align: center; margin-top: 32px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
+.footer-links { display: flex; gap: 22px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: white; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); width: 100%; text-align: center; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.06); }
 
-@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-.reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { display: none; }
+  .screenshots-grid { grid-template-columns: 1fr; }
+  .screenshot-mobile-wrap { flex-direction: row; justify-content: center; }
   .features-grid { grid-template-columns: 1fr 1fr; }
   .modules-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
   .nav-links { display: none; }
+  .hero-stats { gap: 24px; }
 }
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   .features-grid { grid-template-columns: 1fr; }
-  .hero-stats { gap: 20px; }
+  .screenshot-mobile-wrap { flex-direction: column; }
 }
 </style>
 </head>
@@ -195,11 +202,11 @@ footer { background: var(--navy-dark); padding: 48px 5% 32px; border-top: 1px so
 <nav>
   <a href="#" class="nav-logo">
     <img src="https://i.ibb.co/PvVNQdSD/Dise-o-sin-t-tulo.png" alt="RISICUM PRO">
-    RISICUM <span>PRO</span>
+    <span class="nav-logo-text">RISICUM <span>PRO</span></span>
   </a>
   <ul class="nav-links">
     <li><a href="#caracteristicas">Características</a></li>
-    <li><a href="#modulos">Módulos</a></li>
+    <li><a href="#capturas">Ver la app</a></li>
     <li><a href="#precios">Precios</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#precios" class="nav-cta">Empezar ahora</a></li>
@@ -207,55 +214,57 @@ footer { background: var(--navy-dark); padding: 48px 5% 32px; border-top: 1px so
 </nav>
 
 <section class="hero">
-  <div class="hero-grid">
-    <div>
-      <div class="hero-badge">Software SST para Profesionales</div>
-      <h1>Gestioná la seguridad e higiene con <span>precisión y velocidad</span></h1>
-      <p>La herramienta que necesitás para gestionar inspecciones, riesgos, acciones correctivas y extintores. Todo en un solo lugar, desde cualquier dispositivo.</p>
-      <div class="hero-btns">
-        <a href="#precios" class="btn-primary">Empezar ahora — desde $39.900/mes →</a>
-        <a href="#caracteristicas" class="btn-secondary">Ver características</a>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">⚠️ Software SST para Profesionales en H&S</div>
+    <h1>Gestioná la seguridad e higiene con <span>precisión y velocidad</span></h1>
+    <p>La herramienta que necesitás para gestionar inspecciones, riesgos, acciones correctivas y extintores. Todo en un solo lugar, desde cualquier dispositivo.</p>
+    <div class="hero-btns">
+      <a href="#precios" class="btn-primary">Empezar ahora — desde $39.900/mes →</a>
+      <a href="#capturas" class="btn-secondary">Ver la app en acción</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Digital y en la nube</div>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-num">100%</div>
-          <div class="hero-stat-label">Digital y en la nube</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">PWA</div>
-          <div class="hero-stat-label">Funciona en celular</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-num">24/7</div>
-          <div class="hero-stat-label">Acceso desde cualquier lugar</div>
-        </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">PWA</div>
+        <div class="hero-stat-label">Funciona en celular</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">∞</div>
+        <div class="hero-stat-label">Empresas ilimitadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">24/7</div>
+        <div class="hero-stat-label">Acceso desde cualquier lugar</div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="mockup-frame">
-        <div class="mockup-bar">
-          <div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div>
+  </div>
+</section>
+
+<!-- CAPTURAS -->
+<section class="screenshots-section" id="capturas">
+  <div class="screenshots-inner">
+    <h2 class="screenshots-title reveal">Así se ve RISICUM PRO</h2>
+    <p class="screenshots-sub reveal">Diseño limpio y profesional. Funciona perfecto en PC y en el celular.</p>
+    <div class="screenshots-grid">
+      <div>
+        <div class="screenshot-label reveal" style="margin-bottom:10px">📺 Vista en escritorio</div>
+        <div class="screenshot-web reveal">
+          <img src="https://i.ibb.co/hJPMbDrP/Sin-t-tulo.png" alt="Dashboard RISICUM PRO - escritorio" loading="lazy">
         </div>
-        <div class="mockup-content">
-          <div class="mockup-sidebar">
-            <div class="mockup-menu-item"></div>
-            <div class="mockup-menu-item active"></div>
-            <div class="mockup-menu-item"></div>
-            <div class="mockup-menu-item"></div>
-            <div class="mockup-menu-item"></div>
-            <div class="mockup-menu-item"></div>
+      </div>
+      <div class="screenshot-mobile-wrap">
+        <div>
+          <div class="screenshot-label reveal" style="margin-bottom:10px; text-align:center">📱 Vista en celular</div>
+          <div class="screenshot-mobile reveal">
+            <img src="https://i.ibb.co/wN5b9FYt/Whats-App-Image-2026-04-09-at-09-35-21.jpg" alt="Dashboard RISICUM PRO - mobile" loading="lazy">
           </div>
-          <div class="mockup-main">
-            <div class="mockup-kpis">
-              <div class="mockup-kpi"><div class="mockup-kpi-val" style="color:#ff8133">12</div><div class="mockup-kpi-label">Riesgos</div></div>
-              <div class="mockup-kpi"><div class="mockup-kpi-val">87%</div><div class="mockup-kpi-label">Acciones</div></div>
-              <div class="mockup-kpi"><div class="mockup-kpi-val" style="color:#22c55e">5</div><div class="mockup-kpi-label">Extintores</div></div>
-            </div>
-            <div class="mockup-table">
-              <div class="mockup-row header"></div>
-              <div class="mockup-row"></div><div class="mockup-row"></div>
-              <div class="mockup-row"></div><div class="mockup-row"></div>
-            </div>
+          <div style="text-align:center; margin-top:12px">
+            <span class="screenshot-badge reveal">Responsive · Instalable como app</span>
           </div>
         </div>
       </div>
@@ -263,6 +272,7 @@ footer { background: var(--navy-dark); padding: 48px 5% 32px; border-top: 1px so
   </div>
 </section>
 
+<!-- FEATURES -->
 <section class="section" id="caracteristicas">
   <div class="section-inner">
     <p class="section-tag reveal">¿Por qué RISICUM PRO?</p>
@@ -279,29 +289,31 @@ footer { background: var(--navy-dark); padding: 48px 5% 32px; border-top: 1px so
   </div>
 </section>
 
-<section class="modules-section" id="modulos">
+<!-- MODULES -->
+<section class="modules-section">
   <div class="section-inner">
-    <p class="section-tag reveal">Módulos incluidos</p>
+    <p class="section-tag reveal">Plan Basic — Módulos incluidos</p>
     <h2 class="section-title reveal">Todo lo que necesitás en un solo sistema</h2>
     <p class="section-subtitle reveal">Cada módulo está integrado. Los datos fluyen solos entre inspecciones, riesgos y acciones.</p>
     <div class="modules-grid">
-      <div class="module-item reveal"><div class="module-icon-bg">📊</div><span class="module-name">Dashboard ejecutivo</span></div>
-      <div class="module-item reveal"><div class="module-icon-bg">🏢</div><span class="module-name">Empresas ilimitadas</span></div>
-      <div class="module-item reveal"><div class="module-icon-bg">🔍</div><span class="module-name">Inspecciones SST</span></div>
-      <div class="module-item reveal"><div class="module-icon-bg">⚠️</div><span class="module-name">Gestión de riesgos</span></div>
-      <div class="module-item reveal"><div class="module-icon-bg">✅</div><span class="module-name">Acciones correctivas</span></div>
-      <div class="module-item reveal"><div class="module-icon-bg">🔥</div><span class="module-name">Extintores</span></div>
-      <div class="module-item reveal"><div class="module-icon-bg">📈</div><span class="module-name">Reportes e indicadores</span></div>
-      <div class="module-item reveal"><div class="module-icon-bg">🔎</div><span class="module-name">Auditoría</span></div>
+      <div class="module-item reveal"><div class="module-icon">📊</div><span class="module-name">Dashboard ejecutivo</span></div>
+      <div class="module-item reveal"><div class="module-icon">🏢</div><span class="module-name">Empresas ilimitadas</span></div>
+      <div class="module-item reveal"><div class="module-icon">🔍</div><span class="module-name">Inspecciones SST</span></div>
+      <div class="module-item reveal"><div class="module-icon">⚠️</div><span class="module-name">Gestión de riesgos</span></div>
+      <div class="module-item reveal"><div class="module-icon">✅</div><span class="module-name">Acciones correctivas</span></div>
+      <div class="module-item reveal"><div class="module-icon">🔥</div><span class="module-name">Extintores</span></div>
+      <div class="module-item reveal"><div class="module-icon">📈</div><span class="module-name">Reportes e indicadores</span></div>
+      <div class="module-item reveal"><div class="module-icon">🔎</div><span class="module-name">Auditoría</span></div>
     </div>
   </div>
 </section>
 
+<!-- PRICING -->
 <section class="section" id="precios">
   <div class="section-inner">
     <p class="section-tag reveal" style="text-align:center">Precios</p>
     <h2 class="section-title reveal" style="text-align:center">Empezá hoy mismo</h2>
-    <p class="section-subtitle reveal" style="text-align:center;margin:0 auto 0">Sin contratos. Cancelás cuando querés. Acceso inmediato.</p>
+    <p class="section-subtitle reveal" style="text-align:center;margin:0 auto">Sin contratos. Cancelás cuando querés. Acceso inmediato.</p>
     <div class="pricing-grid">
       <div class="pricing-card reveal">
         <p class="pricing-plan">Plan Basic</p>
@@ -337,12 +349,13 @@ footer { background: var(--navy-dark); padding: 48px 5% 32px; border-top: 1px so
           <li>Capacitaciones</li>
           <li>1 admin + 5 usuarios</li>
         </ul>
-        <a href="mailto:risicumpro@gmail.com?subject=Consulta Plan Pro" class="btn-plan btn-plan-filled">Consultar disponibilidad →</a>
+        <div class="btn-plan btn-plan-soon">🔒 Disponible próximamente</div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
 <section class="testimonials-section">
   <div class="section-inner">
     <p class="section-tag reveal">Testimonios</p>
@@ -352,49 +365,42 @@ footer { background: var(--navy-dark); padding: 48px 5% 32px; border-top: 1px so
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">"Antes llevaba todo en planillas de Excel. Con RISICUM PRO en 10 minutos genero el informe de inspección y se lo mando al cliente. Cambió mi forma de trabajar."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">M</div>
-          <div><div class="testimonial-name">Marcelo R.</div><div class="testimonial-role">Técnico Superior en H&S · Córdoba</div></div>
-        </div>
+        <div class="testimonial-author"><div class="testimonial-avatar">M</div><div><div class="testimonial-name">Marcelo R.</div><div class="testimonial-role">Técnico Superior en H&S · Córdoba</div></div></div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Gestiono 8 empresas diferentes. El poder tener todo organizado por empresa, con las fechas de vencimiento de los extintores y las acciones pendientes es invaluable."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">S</div>
-          <div><div class="testimonial-name">Silvina P.</div><div class="testimonial-role">Licenciada en H&S · Buenos Aires</div></div>
-        </div>
+        <p class="testimonial-text">"Gestiono 8 empresas diferentes. Tener todo organizado con las fechas de vencimiento de extintores y las acciones pendientes es invaluable para mi trabajo diario."</p>
+        <div class="testimonial-author"><div class="testimonial-avatar">S</div><div><div class="testimonial-name">Silvina P.</div><div class="testimonial-role">Licenciada en H&S · Buenos Aires</div></div></div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
         <p class="testimonial-text">"Lo uso desde el celular cuando hago las visitas. Cargo los hallazgos en el momento y cuando llego a la oficina el informe ya está listo para revisar."</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">D</div>
-          <div><div class="testimonial-name">Diego F.</div><div class="testimonial-role">Técnico en H&S · Tucumán</div></div>
-        </div>
+        <div class="testimonial-author"><div class="testimonial-avatar">D</div><div><div class="testimonial-name">Diego F.</div><div class="testimonial-role">Técnico en H&S · Tucumán</div></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="faq-section" id="faq">
+<!-- FAQ -->
+<section class="section" id="faq">
   <div class="faq-inner">
     <p class="section-tag reveal" style="text-align:center">Preguntas frecuentes</p>
     <h2 class="section-title reveal" style="text-align:center">Todo lo que necesitás saber</h2>
     <div class="faq-list">
       <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Necesito instalar algo?<div class="faq-icon">+</div></button><div class="faq-answer"><p>No. RISICUM PRO es una aplicación web que funciona directamente en el navegador. También podés instalarla en tu celular como una app nativa (PWA) sin pasar por el App Store ni Google Play.</p></div></div>
       <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Puedo gestionar múltiples empresas?<div class="faq-icon">+</div></button><div class="faq-answer"><p>Sí. El Plan Basic incluye empresas ilimitadas. Podés gestionar todos tus clientes desde una sola cuenta, cambiando entre empresas con un clic.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Cómo funciona el pago?<div class="faq-icon">+</div></button><div class="faq-answer"><p>El pago es mensual y recurrente a través de Mercado Pago. Al suscribirte te redirigirá a una pantalla para crear tu usuario y contraseña. Podés cancelar en cualquier momento desde la misma app.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Los datos están seguros?<div class="faq-icon">+</div></button><div class="faq-answer"><p>Sí. Tus datos se almacenan en infraestructura AWS con encriptación en tránsito y en reposo. Cada usuario solo puede ver los datos de sus propias empresas.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Puedo ver el sistema antes de pagar?<div class="faq-icon">+</div></button><div class="faq-answer"><p>Escribinos a risicumpro@gmail.com y te mostramos el sistema en detalle antes de tomar la decisión. También próximamente habilitaremos un período de prueba gratuito.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Qué pasa si cancelo mi suscripción?<div class="faq-icon">+</div></button><div class="faq-answer"><p>Si cancelás tu suscripción, el acceso se desactiva inmediatamente. Podés exportar toda tu información antes de cancelar desde el módulo de Reportes.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Cómo funciona el pago y la activación?<div class="faq-icon">+</div></button><div class="faq-answer"><p>El pago es mensual y recurrente a través de Mercado Pago. Al suscribirte, te redirigirá a una pantalla para crear tu email y contraseña. En segundos ya estás dentro del sistema. Podés cancelar en cualquier momento desde la misma app.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Los datos están seguros?<div class="faq-icon">+</div></button><div class="faq-answer"><p>Sí. Tus datos se almacenan en infraestructura AWS con encriptación en tránsito y en reposo. Cada usuario solo puede ver los datos de sus propias empresas. Nadie más tiene acceso a tu información.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Puedo ver el sistema antes de pagar?<div class="faq-icon">+</div></button><div class="faq-answer"><p>Sí. Escribinos a risicumpro@gmail.com y con gusto te mostramos el sistema en detalle antes de que tomes la decisión. También próximamente habilitaremos un período de prueba gratuito.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">¿Qué pasa si cancelo mi suscripción?<div class="faq-icon">+</div></button><div class="faq-answer"><p>Si cancelás, el acceso se desactiva. Podés exportar toda tu información antes de cancelar desde el módulo de Reportes.</p></div></div>
     </div>
   </div>
 </section>
 
+<!-- CTA -->
 <section class="cta-section">
   <h2 class="reveal">¿Listo para profesionalizar tu gestión SST?</h2>
-  <p class="reveal">Empezá hoy. Sin contratos. Sin sorpresas.</p>
+  <p class="reveal">Empezá hoy. Sin contratos. Sin sorpresas. Acceso inmediato.</p>
   <div class="cta-btns reveal">
     <a href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=99ced107295045c1a963a8d59a0d54d7" class="btn-primary">Suscribirse al Plan Basic — $39.900/mes →</a>
     <a href="mailto:risicumpro@gmail.com" class="btn-secondary">Consultar por email</a>
@@ -424,11 +430,11 @@ function toggleFaq(btn) {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 60)
+      setTimeout(() => entry.target.classList.add('visible'), i * 50)
       observer.unobserve(entry.target)
     }
   })
-}, { threshold: 0.1 })
+}, { threshold: 0.08 })
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
 </script>
 </body>
