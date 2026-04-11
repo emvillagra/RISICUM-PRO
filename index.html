@@ -305,6 +305,67 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   .nav-hamburger { display: flex; }
   .nav-links { display: none !important; }
 }
+
+/* ── PLATAFORMA ── */
+.plat-item {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 48px; align-items: center; margin-bottom: 0;
+}
+.plat-item-reverse { direction: rtl; }
+.plat-item-reverse > * { direction: ltr; }
+
+.plat-tag {
+  font-size: 11px; font-weight: 700; color: var(--orange);
+  text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px;
+}
+.plat-title {
+  font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--navy);
+  letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 14px;
+}
+.plat-desc {
+  font-size: 15px; color: var(--gray-500); line-height: 1.7; margin-bottom: 20px;
+}
+.plat-features {
+  list-style: none; display: flex; flex-direction: column; gap: 8px;
+}
+.plat-features li {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14px; color: var(--gray-700); font-weight: 500;
+}
+.plat-features li::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--orange); flex-shrink: 0;
+}
+
+.plat-img-wrap { position: relative; }
+.plat-screen-label {
+  font-size: 11px; font-weight: 700; color: var(--gray-500);
+  text-transform: uppercase; letter-spacing: 0.1em;
+  margin-bottom: 10px; text-align: center;
+}
+.plat-img-desktop {
+  width: 100%; border-radius: 12px;
+  box-shadow: 0 16px 48px rgba(15,64,116,0.18);
+  border: 2px solid var(--gray-200);
+}
+.plat-img-wrap-mobile { display: flex; flex-direction: column; align-items: center; }
+.plat-img-mobile {
+  max-width: 260px; width: 100%; border-radius: 24px;
+  box-shadow: 0 16px 48px rgba(15,64,116,0.22);
+  border: 3px solid var(--gray-200);
+}
+
+.plat-divider {
+  border: none; border-top: 1px solid var(--gray-200);
+  margin: 56px 0;
+}
+
+@media (max-width: 900px) {
+  .plat-item { grid-template-columns: 1fr; gap: 28px; }
+  .plat-item-reverse { direction: ltr; }
+  .plat-img-mobile { max-width: 220px; }
+}
+
 </style>
 </head>
 <body>
@@ -323,6 +384,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   <a href="#" class="nav-drawer-logo">RISICUM <span>PRO</span></a>
   <ul class="nav-drawer-links">
     <li><a href="#modulos" onclick="closeDrawer()">Módulos</a></li>
+    <li><a href="#plataforma" onclick="closeDrawer()">Cómo funciona</a></li>
     <li><a href="#precio" onclick="closeDrawer()">Precio</a></li>
     <li><a href="#faq" onclick="closeDrawer()">FAQ</a></li>
   </ul>
@@ -350,6 +412,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   </button>
   <ul class="nav-links">
     <li><a href="#modulos">Módulos</a></li>
+    <li><a href="#plataforma">Cómo funciona</a></li>
     <li><a href="#precio">Precio</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="https://risicum-pro-1-0.vercel.app/" target="_blank" class="nav-ingresar">Ingresar al panel →</a></li>
@@ -418,6 +481,55 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
     <h2 class="reveal">Hecho para la forma real de trabajar del profesional en H&S</h2>
     <p class="reveal">No es un sistema genérico. Cada módulo acompaña tareas concretas del día a día.</p>
     <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary reveal">Ver demo en vivo →</a>
+  </div>
+</section>
+
+
+<!-- CÓMO FUNCIONA LA PLATAFORMA -->
+<section class="section" id="plataforma" style="background: white;">
+  <div class="section-inner">
+    <p class="section-tag reveal" style="text-align:center">La plataforma</p>
+    <h2 class="section-title reveal" style="text-align:center">Diseñada para el trabajo real del profesional</h2>
+    <p class="section-subtitle reveal" style="text-align:center;margin:0 auto 52px;">Funciona desde la PC en el escritorio y desde el celular en campo. Sin instalar nada.</p>
+
+    <!-- ITEM 1 — DASHBOARD WEB -->
+    <div class="plat-item reveal">
+      <div class="plat-text">
+        <div class="plat-tag">Dashboard ejecutivo</div>
+        <h3 class="plat-title">Todo el panorama de tu gestión, de un vistazo</h3>
+        <p class="plat-desc">Indicadores clave, calendario de vencimientos y alertas activas en una sola pantalla. Sabés exactamente dónde estás parado con cada empresa sin tener que buscar en carpetas ni planillas.</p>
+        <ul class="plat-features">
+          <li>KPIs por empresa en tiempo real</li>
+          <li>Calendario con vencimientos e inspecciones</li>
+          <li>Alertas de incidentes y documentos por vencer</li>
+        </ul>
+      </div>
+      <div class="plat-img-wrap">
+        <div class="plat-screen-label">Vista escritorio</div>
+        <img src="https://i.ibb.co/hJPMbDrP/Sin-t-tulo.png" alt="Dashboard RISICUM PRO escritorio" class="plat-img plat-img-desktop" loading="lazy">
+      </div>
+    </div>
+
+    <div class="plat-divider"></div>
+
+    <!-- ITEM 2 — MOBILE -->
+    <div class="plat-item plat-item-reverse reveal">
+      <div class="plat-text">
+        <div class="plat-tag">Acceso desde celular</div>
+        <h3 class="plat-title">Toda la información en el bolsillo, en obra o en visita</h3>
+        <p class="plat-desc">Cargás hallazgos, consultás datos y hacés seguimiento desde el celular mientras estás en campo. Cuando volvés a la oficina, todo ya está registrado. Sin notas en papel ni recordar de memoria.</p>
+        <ul class="plat-features">
+          <li>Instalable como app en Android e iOS</li>
+          <li>Misma información que en escritorio</li>
+          <li>Funciona con conexión 4G o WiFi</li>
+        </ul>
+      </div>
+      <div class="plat-img-wrap plat-img-wrap-mobile">
+        <div class="plat-screen-label">Vista celular</div>
+        <img src="https://i.ibb.co/wN5b9FYt/Whats-App-Image-2026-04-09-at-09-35-21.jpg" alt="Dashboard RISICUM PRO celular" class="plat-img plat-img-mobile" loading="lazy">
+      </div>
+    </div>
+
   </div>
 </section>
 
