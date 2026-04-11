@@ -366,6 +366,80 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   .plat-img-mobile { max-width: 220px; }
 }
 
+
+/* ── PLATAFORMA + CARRUSEL ── */
+.plat-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 52px; align-items: center; margin-top: 44px;
+}
+.plat-desc {
+  font-size: 15px; color: var(--gray-500); line-height: 1.75; margin-bottom: 24px;
+}
+.plat-features {
+  list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px;
+}
+.plat-features li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--gray-700); font-weight: 500; line-height: 1.5;
+}
+.plat-features li::before {
+  content: ''; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--orange); flex-shrink: 0; margin-top: 6px;
+}
+
+.carousel-wrap {
+  position: relative; overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 20px 56px rgba(15,64,116,0.18);
+  border: 2px solid var(--gray-200);
+  background: var(--gray-100);
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+.carousel-slide {
+  min-width: 100%; position: relative;
+}
+.carousel-slide img {
+  width: 100%; display: block; border-radius: 14px;
+  object-fit: cover;
+}
+
+.carousel-nav {
+  display: flex; align-items: center; gap: 16px;
+}
+.carousel-btn {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--navy); border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: white; transition: background 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+.carousel-btn svg { width: 18px; height: 18px; }
+.carousel-btn:hover { background: var(--orange); transform: scale(1.05); }
+.carousel-counter {
+  font-size: 14px; font-weight: 700; color: var(--gray-500);
+}
+.carousel-dots {
+  display: flex; gap: 6px; margin-bottom: 20px;
+}
+.carousel-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gray-200); cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  border: none;
+}
+.carousel-dot.active {
+  background: var(--orange); transform: scale(1.3);
+}
+
+@media (max-width: 900px) {
+  .plat-layout { grid-template-columns: 1fr; gap: 32px; }
+  .plat-text-col { order: 2; }
+  .carousel-wrap { order: 1; }
+}
+
 </style>
 </head>
 <body>
@@ -486,50 +560,48 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 
 
 <!-- CÓMO FUNCIONA LA PLATAFORMA -->
-<section class="section" id="plataforma" style="background: white;">
+<section class="section" id="plataforma" style="background: white; padding: 72px 5%;">
   <div class="section-inner">
-    <p class="section-tag reveal" style="text-align:center">La plataforma</p>
-    <h2 class="section-title reveal" style="text-align:center">Diseñada para el trabajo real del profesional</h2>
-    <p class="section-subtitle reveal" style="text-align:center;margin:0 auto 52px;">Funciona desde la PC en el escritorio y desde el celular en campo. Sin instalar nada.</p>
+    <p class="section-tag reveal" style="text-align:center">La plataforma en acción</p>
+    <h2 class="section-title reveal" style="text-align:center">Toda la información en el bolsillo, en obra o en visita</h2>
 
-    <!-- ITEM 1 — DASHBOARD WEB -->
-    <div class="plat-item reveal">
-      <div class="plat-text">
-        <div class="plat-tag">Dashboard ejecutivo</div>
-        <h3 class="plat-title">Todo el panorama de tu gestión, de un vistazo</h3>
-        <p class="plat-desc">Indicadores clave, calendario de vencimientos y alertas activas en una sola pantalla. Sabés exactamente dónde estás parado con cada empresa sin tener que buscar en carpetas ni planillas.</p>
+    <div class="plat-layout reveal">
+      <!-- TEXTO -->
+      <div class="plat-text-col">
+        <p class="plat-desc">Cargás hallazgos, consultás datos y hacés seguimiento desde el celular mientras estás en campo. Cuando volvés a la oficina, todo ya está registrado y listo para presentar. Sin notas en papel, sin depender de la memoria, sin perder información en el camino.</p>
         <ul class="plat-features">
-          <li>KPIs por empresa en tiempo real</li>
-          <li>Calendario con vencimientos e inspecciones</li>
-          <li>Alertas de incidentes y documentos por vencer</li>
+          <li>Instalable como app en Android e iOS — sin pasar por tiendas</li>
+          <li>Misma información sincronizada entre escritorio y celular</li>
+          <li>Modo claro y oscuro según tu preferencia</li>
+          <li>Plataforma bilingüe — español e inglés</li>
+          <li>Accedé desde cualquier dispositivo con tu cuenta</li>
         </ul>
+        <!-- DOTS -->
+        <div class="carousel-dots" id="carouselDots"></div>
+        <!-- FLECHAS -->
+        <div class="carousel-nav">
+          <button class="carousel-btn" onclick="moveCarousel(-1)" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <span class="carousel-counter" id="carouselCounter">1 / 6</span>
+          <button class="carousel-btn" onclick="moveCarousel(1)" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
       </div>
-      <div class="plat-img-wrap">
-        <div class="plat-screen-label">Vista escritorio</div>
-        <img src="https://i.ibb.co/hJPMbDrP/Sin-t-tulo.png" alt="Dashboard RISICUM PRO escritorio" class="plat-img plat-img-desktop" loading="lazy">
+
+      <!-- CARRUSEL -->
+      <div class="carousel-wrap">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-slide"><img src="https://i.ibb.co/B2BcBgHx/1.jpg" alt="RISICUM PRO pantalla 1" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://i.ibb.co/DPPkq2Rx/2.jpg" alt="RISICUM PRO pantalla 2" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://i.ibb.co/67z2Qw1Q/3.jpg" alt="RISICUM PRO pantalla 3" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://i.ibb.co/PsZNxcLC/4.jpg" alt="RISICUM PRO pantalla 4" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://i.ibb.co/1GvSHjK7/5.jpg" alt="RISICUM PRO pantalla 5" loading="lazy"></div>
+          <div class="carousel-slide"><img src="https://i.ibb.co/0TRhpqX/6.jpg" alt="RISICUM PRO pantalla 6" loading="lazy"></div>
+        </div>
       </div>
     </div>
-
-    <div class="plat-divider"></div>
-
-    <!-- ITEM 2 — MOBILE -->
-    <div class="plat-item plat-item-reverse reveal">
-      <div class="plat-text">
-        <div class="plat-tag">Acceso desde celular</div>
-        <h3 class="plat-title">Toda la información en el bolsillo, en obra o en visita</h3>
-        <p class="plat-desc">Cargás hallazgos, consultás datos y hacés seguimiento desde el celular mientras estás en campo. Cuando volvés a la oficina, todo ya está registrado. Sin notas en papel ni recordar de memoria.</p>
-        <ul class="plat-features">
-          <li>Instalable como app en Android e iOS</li>
-          <li>Misma información que en escritorio</li>
-          <li>Funciona con conexión 4G o WiFi</li>
-        </ul>
-      </div>
-      <div class="plat-img-wrap plat-img-wrap-mobile">
-        <div class="plat-screen-label">Vista celular</div>
-        <img src="https://i.ibb.co/wN5b9FYt/Whats-App-Image-2026-04-09-at-09-35-21.jpg" alt="Dashboard RISICUM PRO celular" class="plat-img plat-img-mobile" loading="lazy">
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -679,6 +751,56 @@ function closeDrawer() {
   document.getElementById('navOverlay').classList.remove('open')
   document.body.style.overflow = ''
 }
+
+// CARRUSEL
+let carouselIdx = 0;
+const carouselTotal = 6;
+
+function initCarousel() {
+  const dotsEl = document.getElementById('carouselDots');
+  if (!dotsEl) return;
+  for (let i = 0; i < carouselTotal; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Ir a imagen ' + (i+1));
+    dot.onclick = () => goToSlide(i);
+    dotsEl.appendChild(dot);
+  }
+  // Auto-avance cada 4s
+  setInterval(() => moveCarousel(1), 4000);
+}
+
+function goToSlide(idx) {
+  carouselIdx = idx;
+  updateCarousel();
+}
+
+function moveCarousel(dir) {
+  carouselIdx = (carouselIdx + dir + carouselTotal) % carouselTotal;
+  updateCarousel();
+}
+
+function updateCarousel() {
+  const track = document.getElementById('carouselTrack');
+  const counter = document.getElementById('carouselCounter');
+  const dots = document.querySelectorAll('.carousel-dot');
+  if (track) track.style.transform = `translateX(-${carouselIdx * 100}%)`;
+  if (counter) counter.textContent = (carouselIdx + 1) + ' / ' + carouselTotal;
+  dots.forEach((d, i) => d.classList.toggle('active', i === carouselIdx));
+}
+
+// Touch swipe
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  const track = document.getElementById('carouselTrack');
+  if (!track) return;
+  if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
+});
+
+initCarousel();
+
 </script>
 </body>
 </html>
