@@ -128,6 +128,7 @@ nav {
 .pricing-card-secondary .pricing-divider { border-color: rgba(255,255,255,0.1); }
 .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
 .pricing-features li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.45; }
+.pricing-card-secondary .pricing-features li { color: rgba(255,255,255,0.75); }
 .pricing-features li::before { content: '✓'; color: var(--orange); font-weight: 700; flex-shrink: 0; }
 .btn-plan-main { display: block; text-align: center; padding: 13px; border-radius: 9px; font-weight: 700; font-size: 15px; text-decoration: none; background: var(--orange); color: white; box-shadow: 0 4px 16px rgba(255,129,51,0.35); transition: all 0.2s; }
 .btn-plan-main:hover { background: var(--orange-dark); transform: translateY(-2px); }
@@ -213,9 +214,123 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 @media (max-width: 560px) {
   .features-grid { grid-template-columns: 1fr; }
 }
+
+/* ── MENU HAMBURGUESA MOBILE ── */
+.nav-hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  padding: 6px; color: white;
+}
+.nav-hamburger svg { width: 26px; height: 26px; }
+
+.nav-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; width: 280px; z-index: 200;
+  background: var(--navy-dark);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  border-left: 1px solid rgba(255,255,255,0.08);
+  display: flex; flex-direction: column; padding: 24px;
+}
+.nav-drawer.open { transform: translateX(0); }
+
+.nav-drawer-close {
+  align-self: flex-end; background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.6); padding: 4px; margin-bottom: 24px;
+}
+.nav-drawer-close svg { width: 24px; height: 24px; }
+
+.nav-drawer-logo {
+  font-weight: 800; font-size: 20px; color: white; margin-bottom: 32px;
+  text-decoration: none;
+}
+.nav-drawer-logo span { color: var(--orange); }
+
+.nav-drawer-links {
+  list-style: none; display: flex; flex-direction: column; gap: 4px; flex: 1;
+}
+.nav-drawer-links a {
+  display: block; color: rgba(255,255,255,0.75); text-decoration: none;
+  font-size: 16px; font-weight: 600; padding: 12px 16px; border-radius: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-drawer-links a:hover { background: rgba(255,255,255,0.08); color: white; }
+
+.nav-drawer-btns { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+.nav-drawer-btns a {
+  display: block; text-align: center; padding: 13px; border-radius: 9px;
+  font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s;
+}
+.nav-drawer-ingresar { background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); }
+.nav-drawer-cta { background: var(--orange); color: white; }
+.nav-drawer-cta:hover { background: var(--orange-dark); }
+
+.nav-overlay {
+  position: fixed; inset: 0; z-index: 199;
+  background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+}
+.nav-overlay.open { opacity: 1; pointer-events: all; }
+
+/* ── BADGE HERO DESTACADO ── */
+.hero-badge {
+  font-size: 13px !important; font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  background: rgba(255,255,255,0.15) !important;
+  border: 1px solid rgba(255,255,255,0.3) !important;
+  color: white !important;
+  text-transform: uppercase !important;
+}
+
+/* ── ANIMACIONES SUAVES GLOBALES ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+.feature-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important; }
+.btn-primary, .btn-secondary, .btn-plan-main { transition: all 0.2s ease !important; }
+.testimonial-card { transition: background 0.25s ease !important; }
+.faq-item { transition: box-shadow 0.2s ease !important; }
+
+/* ── PLAN PRO LETRAS CLARAS ── */
+.pricing-card-secondary .pro-soon-label { color: white !important; }
+.pricing-card-secondary .pro-soon-sub { color: rgba(255,255,255,0.65) !important; }
+.pricing-card-secondary .pricing-features li { color: rgba(255,255,255,0.75) !important; }
+.pricing-card-secondary .pricing-features li::before { color: var(--orange) !important; }
+
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex; }
+  .nav-links { display: none !important; }
+}
 </style>
 </head>
 <body>
+
+
+<!-- OVERLAY -->
+<div class="nav-overlay" id="navOverlay" onclick="closeDrawer()"></div>
+
+<!-- DRAWER LATERAL -->
+<div class="nav-drawer" id="navDrawer">
+  <button class="nav-drawer-close" onclick="closeDrawer()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+  <a href="#" class="nav-drawer-logo">RISICUM <span>PRO</span></a>
+  <ul class="nav-drawer-links">
+    <li><a href="#modulos" onclick="closeDrawer()">Módulos</a></li>
+    <li><a href="#precio" onclick="closeDrawer()">Precio</a></li>
+    <li><a href="#faq" onclick="closeDrawer()">FAQ</a></li>
+  </ul>
+  <div class="nav-drawer-btns">
+    <a href="https://risicum-pro-1-0.vercel.app/" target="_blank" class="nav-drawer-ingresar">Ingresar al panel →</a>
+    <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="nav-drawer-cta">Ver demo</a>
+  </div>
+</div>
 
 <!-- WA FLOTANTE -->
 <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="wa-float" title="Contactar por WhatsApp">
@@ -228,11 +343,16 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
     <img src="https://i.ibb.co/PvVNQdSD/Dise-o-sin-t-tulo.png" alt="RISICUM PRO">
     <span class="nav-logo-text">RISICUM <span>PRO</span></span>
   </a>
+  <button class="nav-hamburger" onclick="openDrawer()" aria-label="Menú">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
   <ul class="nav-links">
     <li><a href="#modulos">Módulos</a></li>
     <li><a href="#precio">Precio</a></li>
     <li><a href="#faq">FAQ</a></li>
-    <li><a href="https://risicum-pro-1-0.vercel.app/" target="_blank" class="nav-ingresar">Ingresar →</a></li>
+    <li><a href="https://risicum-pro-1-0.vercel.app/" target="_blank" class="nav-ingresar">Ingresar al panel →</a></li>
     <li><a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="nav-cta">Ver demo</a></li>
   </ul>
 </nav>
@@ -242,7 +362,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div class="hero-badge">⚠️ Software para Profesionales en Higiene y Seguridad</div>
+    <div class="hero-badge">Software para Profesionales en Higiene y Seguridad</div>
     <h1>Dejá el Excel atrás.<br>Gestioná todo desde <span>un solo lugar.</span></h1>
     <p>Inspecciones, riesgos, acciones correctivas y extintores — organizados, accesibles y listos para presentar desde el celular o la PC.</p>
     <div class="hero-btns">
@@ -335,7 +455,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
         <p class="pro-soon-label">Próximamente</p>
         <p class="pro-soon-sub">Más funcionalidades para profesionales que trabajan en equipo.</p>
         <hr class="pricing-divider">
-        <ul class="pricing-features" style="color:rgba(255,255,255,0.55);font-size:12px">
+        <ul class="pricing-features" style="font-size:12px">
           <li>Todo el Plan Basic</li>
           <li>Trabajadores e incidentes</li>
           <li>Alertas y capacitaciones</li>
@@ -352,7 +472,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   <h2 class="demo-title reveal">¿Querés ver cómo funciona antes de suscribirte?</h2>
   <p class="demo-sub reveal">Pedí una demo y mirá el sistema en detalle antes de tomar la decisión.</p>
   <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary reveal" style="display:inline-flex">Solicitar demo por WhatsApp →</a>
-  <p class="demo-note reveal">También podés escribirnos a <a href="mailto:risicumpro@gmail.com">risicumpro@gmail.com</a></p>
+  <p class="demo-note reveal">También podés escribirnos a <a href="mailto:info@risicumpro.com.ar">info@risicumpro.com.ar</a></p>
 </section>
 
 <!-- TESTIMONIOS -->
@@ -414,7 +534,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
       <a href="#precio">Precio</a>
       <a href="#faq">FAQ</a>
       <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20contactar%20con%20RISICUM%20PRO" target="_blank">Contacto</a>
-      <a href="https://risicum-pro-1-0.vercel.app/" target="_blank">Ingresar →</a>
+      <a href="https://risicum-pro-1-0.vercel.app/" target="_blank">Ingresar al panel →</a>
     </div>
   </div>
   <p class="footer-copy">© 2026 RISICUM PRO · Sistema de Gestión para Profesionales en Higiene y Seguridad</p>
@@ -436,6 +556,17 @@ const observer = new IntersectionObserver((entries) => {
   })
 }, { threshold: 0.08 })
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el))
+
+function openDrawer() {
+  document.getElementById('navDrawer').classList.add('open')
+  document.getElementById('navOverlay').classList.add('open')
+  document.body.style.overflow = 'hidden'
+}
+function closeDrawer() {
+  document.getElementById('navDrawer').classList.remove('open')
+  document.getElementById('navOverlay').classList.remove('open')
+  document.body.style.overflow = ''
+}
 </script>
 </body>
 </html>
