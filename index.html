@@ -204,6 +204,34 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+
+/* VENTAS */
+.pain-section { background: linear-gradient(180deg, #fff 0%, #f8fafc 100%); padding: 64px 5%; border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
+.pain-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 34px; }
+.pain-card { background:white; border:1.5px solid var(--gray-200); border-radius:16px; padding:24px; }
+.pain-card h3 { font-size:16px; font-weight:800; color:var(--navy); margin-bottom:12px; }
+.pain-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.pain-list li { font-size:14px; line-height:1.6; color:var(--gray-700); display:flex; gap:10px; align-items:flex-start; }
+.pain-list li::before { content:'•'; color:var(--orange); font-weight:800; }
+.compare-section { padding: 64px 5%; background: white; }
+.compare-grid { display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-top:34px; }
+.compare-card { border-radius:18px; padding:28px; border:1.5px solid var(--gray-200); }
+.compare-card.before { background:#fff7f5; border-color:#ffd5bf; }
+.compare-card.after { background:#f7fbff; border-color:#cfe1f5; }
+.compare-card h3 { font-size:20px; font-weight:800; margin-bottom:14px; }
+.compare-card.before h3 { color:#a44513; }
+.compare-card.after h3 { color:var(--navy); }
+.compare-card ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.compare-card li { font-size:14px; color:var(--gray-700); line-height:1.6; display:flex; gap:10px; align-items:flex-start; }
+.compare-card li::before { font-weight:800; }
+.compare-card.before li::before { content:'✕'; color:#d9480f; }
+.compare-card.after li::before { content:'✓'; color:var(--orange); }
+.mini-proof { margin-top:18px; display:inline-flex; align-items:center; gap:8px; font-size:12px; font-weight:700; color:var(--navy); background:#eef5fb; border:1px solid #d8e7f5; padding:8px 14px; border-radius:999px; }
+
+@media (max-width: 900px) {
+  .pain-grid, .compare-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 900px) {
   .features-grid { grid-template-columns: 1fr 1fr; }
   .testimonials-grid { grid-template-columns: 1fr; }
@@ -501,12 +529,12 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <div class="hero-badge">Software para Profesionales en Higiene y Seguridad</div>
-    <h1>Dejá el Excel atrás.<br>Gestioná todo desde <span>un solo lugar.</span></h1>
-    <p>Inspecciones, riesgos, acciones correctivas y extintores — organizados, accesibles y listos para presentar desde el celular o la PC.</p>
+    <div class="hero-badge">Sistema de gestión para profesionales en Higiene y Seguridad</div>
+    <h1>Dejá de perder tiempo con Excel, WhatsApp y papeles.<br>Pasá a <span>gestionar todo en un solo sistema.</span></h1>
+    <p>Controlá inspecciones, riesgos, acciones correctivas y vencimientos en tiempo real, desde el celular o la PC. Menos desorden, menos retrabajo y más tiempo para atender a tus clientes.</p>
     <div class="hero-btns">
-      <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary">Ver cómo funciona →</a>
-      <a href="#precio" class="btn-secondary">Suscribirme ahora</a>
+      <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary">Ver demo en vivo →</a>
+      <a href="#precio" class="btn-secondary">Ver precio y activar</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -522,6 +550,9 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
         <div class="hero-stat-label">Desde cualquier lugar</div>
       </div>
     </div>
+    <p class="hero-proof" style="font-size:14px;color:rgba(255,255,255,0.78);line-height:1.6;max-width:620px;margin:24px auto 0;animation: fadeUp 0.6s 0.5s ease both;">
+      Pensado para profesionales que gestionan múltiples empresas y necesitan orden, seguimiento y una imagen más profesional frente a cada cliente.
+    </p>
   </div>
 </section>
 
@@ -531,12 +562,72 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   <p class="trust-sub reveal">Dejá atrás los Excel separados, los recordatorios manuales y la información repartida entre chats, archivos y carpetas.</p>
 </section>
 
+<!-- PROBLEMA / SOLUCIÓN -->
+<section class="pain-section">
+  <div class="section-inner">
+    <p class="section-tag reveal" style="text-align:center">El problema real</p>
+    <h2 class="section-title reveal" style="text-align:center">Tu trabajo no debería depender de planillas sueltas y mensajes perdidos</h2>
+    <p class="section-subtitle reveal" style="text-align:center;margin:0 auto">RISICUM PRO ordena la gestión diaria para que trabajes más rápido, hagas mejor seguimiento y transmitas una imagen mucho más profesional.</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <h3>Lo que hoy te hace perder tiempo</h3>
+        <ul class="pain-list">
+          <li>Información repartida entre Excel, WhatsApp, mails y anotaciones.</li>
+          <li>Pendientes que se olvidan o quedan sin seguimiento real.</li>
+          <li>Horas perdidas armando reportes y buscando datos.</li>
+          <li>Desorden al manejar varias empresas al mismo tiempo.</li>
+        </ul>
+      </div>
+      <div class="pain-card reveal">
+        <h3>Lo que ganás con RISICUM PRO</h3>
+        <ul class="pain-list">
+          <li>Todo centralizado en un solo sistema, accesible desde cualquier dispositivo.</li>
+          <li>Seguimiento claro de hallazgos, riesgos, acciones y vencimientos.</li>
+          <li>Menos retrabajo y más velocidad para presentar gestión.</li>
+          <li>Más orden interno y mejor percepción de valor frente a tus clientes.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANTES Y DESPUÉS -->
+<section class="compare-section">
+  <div class="section-inner">
+    <p class="section-tag reveal" style="text-align:center">Antes vs después</p>
+    <h2 class="section-title reveal" style="text-align:center">El cambio se nota en cómo trabajás y en cómo te ven tus clientes</h2>
+    <div class="compare-grid">
+      <div class="compare-card before reveal">
+        <h3>Antes</h3>
+        <ul>
+          <li>Planillas separadas por empresa o por tarea.</li>
+          <li>Seguimiento manual y dependiente de la memoria.</li>
+          <li>Visitas en campo con notas sueltas o fotos sin orden.</li>
+          <li>Informes y reportes preparados a último momento.</li>
+        </ul>
+      </div>
+      <div class="compare-card after reveal">
+        <h3>Con RISICUM PRO</h3>
+        <ul>
+          <li>Empresas, inspecciones y acciones en una sola cuenta.</li>
+          <li>Información cargada en el momento, desde el celular.</li>
+          <li>Indicadores y seguimiento listos para mostrar gestión.</li>
+          <li>Una operación más ordenada, rápida y profesional.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center">
+      <span class="mini-proof reveal">Más orden + más velocidad + mejor imagen profesional</span>
+    </div>
+  </div>
+</section>
+
 <!-- MÓDULOS -->
 <section class="section" id="modulos">
   <div class="section-inner">
     <p class="section-tag reveal">Módulos incluidos</p>
-    <h2 class="section-title reveal">Todo lo que necesitás para gestionar mejor, en un solo sistema</h2>
-    <p class="section-subtitle reveal">Hecho para la forma real de trabajar del profesional en Higiene y Seguridad.</p>
+    <h2 class="section-title reveal">Todo lo que necesitás para ahorrar tiempo y profesionalizar tu gestión</h2>
+    <p class="section-subtitle reveal">Pensado para consultores, técnicos y profesionales que trabajan con múltiples empresas.</p>
     <div class="features-grid">
       <div class="feature-card reveal"><div class="feature-icon">📋</div><h3>Inspecciones</h3><p>Registrá hallazgos, completá formularios y generá informes en PDF listos para compartir.</p></div>
       <div class="feature-card reveal"><div class="feature-icon">⚠️</div><h3>Gestión de riesgos</h3><p>Identificá, evaluá y priorizá riesgos con una matriz clara y fácil de mantener actualizada.</p></div>
@@ -554,8 +645,8 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
   <div class="img-section-bg"></div>
   <div class="img-section-overlay"></div>
   <div class="img-section-inner">
-    <h2 class="reveal">Hecho para la forma real de trabajar del profesional en H&S</h2>
-    <p class="reveal">No es un sistema genérico. Cada módulo acompaña tareas concretas del día a día.</p>
+    <h2 class="reveal">Hecho para la forma real de trabajar en campo y en oficina</h2>
+    <p class="reveal">No es un software genérico: acompaña tareas concretas del día a día y te ayuda a llegar con todo más ordenado.</p>
     <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary reveal">Ver demo en vivo →</a>
   </div>
 </section>
@@ -565,7 +656,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 <section class="section" id="plataforma" style="background: white; padding: 72px 5%;">
   <div class="section-inner">
     <p class="section-tag reveal" style="text-align:center">La plataforma en acción</p>
-    <h2 class="section-title reveal" style="text-align:center">Toda la información en el bolsillo, en obra o en visita</h2>
+    <h2 class="section-title reveal" style="text-align:center">Cargá en campo. Mostrá resultados. Volvé a la oficina con todo resuelto</h2>
 
     <div class="plat-layout reveal">
       <!-- TEXTO -->
@@ -611,15 +702,15 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 <section class="pricing-section" id="precio">
   <div class="section-inner">
     <p class="section-tag reveal" style="text-align:center">Precio</p>
-    <h2 class="section-title reveal" style="text-align:center">Todo lo necesario en un solo plan</h2>
-    <p class="section-subtitle reveal" style="text-align:center;margin:0 auto">Sin contratos. Activación inmediata. Cancelás cuando querés.</p>
+    <h2 class="section-title reveal" style="text-align:center">Empezá hoy con un plan simple y listo para usar</h2>
+    <p class="section-subtitle reveal" style="text-align:center;margin:0 auto">Sin contratos largos. Activación inmediata. Cancelás cuando querés.</p>
 
     <div class="pricing-wrap">
       <div class="pricing-card-main reveal">
         <p class="pricing-plan">Plan Basic</p>
         <div class="pricing-price">$39.900</div>
         <p class="pricing-period">por mes</p>
-        <p class="pricing-support">Todo lo necesario para profesionalizar tu gestión en una sola plataforma.</p>
+        <p class="pricing-support">Todo lo necesario para ordenar tu operación, ahorrar tiempo y trabajar con una imagen más profesional.</p>
         <hr class="pricing-divider">
         <ul class="pricing-features">
           <li>Dashboard ejecutivo</li>
@@ -632,7 +723,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
           <li>Acceso desde celular</li>
           <li>1 usuario</li>
         </ul>
-        <a href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=99ced107295045c1a963a8d59a0d54d7" class="btn-plan-main">Suscribirme ahora →</a>
+        <a href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=99ced107295045c1a963a8d59a0d54d7" class="btn-plan-main">Activar mi cuenta ahora →</a>
         <p class="pricing-note">Sin contratos · Activación inmediata</p>
       </div>
 
@@ -655,9 +746,9 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 
 <!-- DEMO -->
 <section class="demo-section">
-  <h2 class="demo-title reveal">¿Querés ver cómo funciona antes de suscribirte?</h2>
-  <p class="demo-sub reveal">Pedí una demo y mirá el sistema en detalle antes de tomar la decisión.</p>
-  <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary reveal" style="display:inline-flex">Solicitar demo por WhatsApp →</a>
+  <h2 class="demo-title reveal">¿Querés verlo en acción antes de decidir?</h2>
+  <p class="demo-sub reveal">Pedí una demo y comprobá en pocos minutos cómo se adapta a tu forma de trabajar.</p>
+  <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary reveal" style="display:inline-flex">Quiero ver una demo →</a>
   <p class="demo-note reveal">También podés escribirnos a <a href="mailto:info@risicumpro.com.ar">info@risicumpro.com.ar</a></p>
 </section>
 
@@ -665,16 +756,16 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 <section class="testimonials-section">
   <div class="section-inner">
     <p class="section-tag reveal">Testimonios</p>
-    <h2 class="section-title reveal">Profesionales que ya ordenaron su gestión con RISICUM PRO</h2>
+    <h2 class="section-title reveal">Profesionales que ya trabajan con más orden y menos retrabajo</h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Antes perdía tiempo ordenando información y armando cada informe por separado. Ahora cargo, sigo pendientes y presento todo mucho más rápido."</p>
+        <p class="testimonial-text">"Antes perdía tiempo ordenando información y armando cada informe por separado. Ahora cargo, hago seguimiento y presento todo mucho más rápido."</p>
         <div class="testimonial-author"><div class="testimonial-avatar">M</div><div><div class="testimonial-name">Marcelo R.</div><div class="testimonial-role">Técnico Superior en H&S · Córdoba</div></div></div>
       </div>
       <div class="testimonial-card reveal">
         <div class="testimonial-stars">★★★★★</div>
-        <p class="testimonial-text">"Poder manejar varias empresas desde una sola cuenta me simplificó muchísimo el trabajo diario."</p>
+        <p class="testimonial-text">"Poder manejar varias empresas desde una sola cuenta me simplificó muchísimo el trabajo diario y me dio más control."</p>
         <div class="testimonial-author"><div class="testimonial-avatar">S</div><div><div class="testimonial-name">Silvina P.</div><div class="testimonial-role">Licenciada en H&S · Buenos Aires</div></div></div>
       </div>
       <div class="testimonial-card reveal">
@@ -690,7 +781,7 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 <section class="faq-section" id="faq">
   <div class="faq-inner">
     <p class="section-tag reveal" style="text-align:center">Preguntas frecuentes</p>
-    <h2 class="section-title reveal" style="text-align:center">Lo que suelen preguntar</h2>
+    <h2 class="section-title reveal" style="text-align:center">Respuestas claras antes de sumarte</h2>
     <div class="faq-list">
       <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">Sin instalaciones complicadas<div class="faq-icon">+</div></button><div class="faq-answer"><p>Funciona directamente desde el navegador. También podés instalarlo en el celular como una app sin pasar por el App Store ni Google Play.</p></div></div>
       <div class="faq-item reveal"><button class="faq-question" onclick="toggleFaq(this)">Empresas ilimitadas<div class="faq-icon">+</div></button><div class="faq-answer"><p>El Plan Basic incluye empresas ilimitadas. Gestionás todos tus clientes desde una sola cuenta, cambiando entre ellos con un clic.</p></div></div>
@@ -703,11 +794,11 @@ footer { background: var(--navy-dark); padding: 36px 5% 24px; border-top: 1px so
 
 <!-- CTA FINAL -->
 <section class="cta-section">
-  <h2 class="reveal">Ordená tu gestión y trabajá con una herramienta pensada para tu día a día.</h2>
-  <p class="reveal">Inspecciones, riesgos, acciones, vencimientos e indicadores en un solo sistema.</p>
+  <h2 class="reveal">Pasá de la gestión desordenada a una operación mucho más profesional.</h2>
+  <p class="reveal">Centralizá tus empresas, tus tareas y tus reportes en una plataforma pensada para vender mejor tu trabajo.</p>
   <div class="cta-btns reveal">
-    <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary">Ver cómo funciona →</a>
-    <a href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=99ced107295045c1a963a8d59a0d54d7" class="btn-secondary">Suscribirme ahora</a>
+    <a href="https://wa.me/5493815089935?text=Hola%2C%20quiero%20ver%20una%20demo%20de%20RISICUM%20PRO" target="_blank" class="btn-primary">Ver demo en vivo →</a>
+    <a href="https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=99ced107295045c1a963a8d59a0d54d7" class="btn-secondary">Activar mi cuenta</a>
   </div>
 </section>
 
